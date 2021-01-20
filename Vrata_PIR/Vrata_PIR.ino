@@ -37,6 +37,13 @@ int lightsOn(bool inputPIR)
     if (valuePWM < 0) valuePWM = 0;
     lastExecuteTime = currentTime;
   }
+  if (inputPIR)
+  {
+    if (valuePWM < 50)
+    {
+      valuePWM = 50;
+    }
+  }
   
   Serial.print(valuePWM);
   analogWrite(PIN_LED_PWM, valuePWM);
